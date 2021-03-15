@@ -1,0 +1,2 @@
+
+int qtdPoltronasDisponiveis(int idPoltrona);
