@@ -1,41 +1,38 @@
-
-
 #include <stdio.h>
 #include <string.h>
 
-
 //renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.c
 #include "PrimeiroUltimoNomeMATRICULA.h"
-
-   // void testSomar();    //fun��o utilizada para testes
-  //  void testFatorial(); //fun��o utilizada para testes
-    void testQ1();
-  /*  void testQ2();
-    void testQ3();
-    void testQ4();
-    void testQ5();
-    void testQ6();*/
+  
+ void testSomar();    
+ void testFatorial(); //função utilizada para testes
+void testQ1();
+void testQ2();
+void testQ3();
+void testQ4();
+void testQ5();
+void testQ6();
 
 int main()
 {
-    // Cada teste que realizar devo descomentar cada um
-    //testSomar();
-    //testFatorial();
-    testQ1();
-    /*testQ2();
-    testQ3();
-    testQ4();
-    testQ5();
-    testQ6();*/
-}
+// void testSomar();    
+ // void testFatorial(); //função utilizada para testes
+ testQ1();
+//void testQ2();
+//void testQ3();
+//void testQ4();
+//void testQ5();
+//void testQ6();
+} 
 
+/*
 int main()
 {
     //digita a data
     char data[11];
     //ler a data em "data"
-    validarData(data);
-}
+     validarData(data);
+} */
 
 void testSomar()
 {
@@ -142,7 +139,7 @@ void testQ4()
     {
         posicoes[i] = -1;
     }
-    strcpy(strTexto, "Laboratorio de programacao: para ratos de programa��o");
+    strcpy(strTexto, "Laboratorio de programacao: para ratos de programação");
     strcpy(strBusca, "rato");
     printf("%d\n", q4(strTexto, strBusca, posicoes) == 2);
     printf("%d\n", posicoes[0] == 5);
@@ -154,7 +151,7 @@ void testQ4()
     {
         posicoes[i] = -1;
     }
-    strcpy(strTexto, "Ol�, o mundo � muito grande. Tem muitas pessoas, e muitos problemas");
+    strcpy(strTexto, "Olá, o mundo é muito grande. Tem muitas pessoas, e muitos problemas");
     strcpy(strBusca, "mui");
     printf("%d\n", q4(strTexto, strBusca, posicoes) == 3);
     printf("%d\n", posicoes[0] == 16);
