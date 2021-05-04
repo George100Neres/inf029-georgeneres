@@ -15,7 +15,8 @@
 // #################################################
 
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 /*
 ## função utilizada para testes  ##
  somar = somar dois valores
@@ -49,7 +50,7 @@ int fatorial(int x)
     return fat;
 }
 // struct para recebeer os dias,mes,Ano
-typedef struct DQ
+/*typedef struct DQ
 {
     char sDia[3];
     char smes [3];
@@ -75,13 +76,13 @@ DataQuebrada quebraData(char  *data) {
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
  */
-int q1(char *data)
+ int q1(char *data)
 {
     int datavalida = 1;
- 
+    printf("%s\n",data);
     //quebrar a string data em strings sDia, sMes, sAno
 
-  DataQuebrada quebraData = quebraData(data); // (struct)passo a data
+ // DataQuebrada quebraData = quebraData(data); // (struct)passo a data
 // chamar a função quebrar Data
 
     //converter sDia, sMes e sAno em inteiros (ex: atoi)
@@ -94,8 +95,8 @@ int q1(char *data)
         return 1;
     else
         return 0;
-}
-
+} 
+ 
 /*
  Q2 = diferença entre duas datas
  @objetivo
@@ -108,7 +109,8 @@ int q1(char *data)
     3 -> datafinal inválida
     4 -> datainicial > datafinal
  */
-int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
+
+  int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
 {
 
     //calcule os dados e armazene nas três variáveis a seguir
@@ -121,19 +123,21 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
     nMeses = 10;
     nAnos = 2;
 
+    return 0;
+}
     /*mantenha o código abaixo, para salvar os dados em 
     nos parâmetros da funcao
     */
-    *qtdDias = nDias;
-    *qtdAnos = nAnos;
-    *qtdMeses = nMeses;
+   // *qtdDias = nDias;
+   // *qtdAnos = nAnos;
+   // *qtdMeses = nMeses;
 
     //coloque o retorno correto
-    return 1;
-}
+   // return 1; 
+// } 
 
-/*
- Q3 = encontrar caracter em texto
+
+/* Q3 = encontrar caracter em texto
  @objetivo
     Pesquisar quantas vezes um determinado caracter ocorre em um texto
  @entrada
@@ -144,8 +148,16 @@ int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtd
  */
 int q3(char *texto, char c, int isCaseSensitive)
 {
-    int qtdOcorrencias = -1;
-
+    //[  ,   ,     ,      ,      ,      ,    ,      ,     ,   ]
+    int qtdOcorrencias = 0;
+   char caract[250]; // Vai faze a busca de caracteres
+   int i,j;
+   int text = 0;
+    
+    for(i=0; i < caract[i]!= '\0'; i++) {
+       texto[i] = caract[i];
+    }
+     
     return qtdOcorrencias;
 }
 

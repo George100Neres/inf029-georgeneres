@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-//renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.c
+//renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.h
 #include "PrimeiroUltimoNomeMATRICULA.h"
-  
- void testSomar();    
- void testFatorial(); //função utilizada para testes
+
+void testSomar();    //função utilizada para testes
+void testFatorial(); //função utilizada para testes
 void testQ1();
 void testQ2();
 void testQ3();
@@ -15,24 +16,15 @@ void testQ6();
 
 int main()
 {
-// void testSomar();    
- // void testFatorial(); //função utilizada para testes
- testQ1();
-//void testQ2();
-//void testQ3();
-//void testQ4();
-//void testQ5();
-//void testQ6();
-} 
-
-/*
-int main()
-{
-    //digita a data
-    char data[11];
-    //ler a data em "data"
-     validarData(data);
-} */
+    //testSomar();
+    //testFatorial();
+    //testQ1();
+    //testQ2();
+    testQ3();
+    /*testQ4();
+    testQ5();
+    testQ6();*/
+}
 
 void testSomar()
 {

@@ -1,17 +1,19 @@
 
-/* Orienta��es Gerais --------
-Descri��o: esse arquivo deve conter as quest�es do trabalho do aluno.
-Cada aluno deve renomear esse arquivo para Aluno<MATRICULA>.c
-O aluno deve preencher seus dados abaixo, e implementar as questoes do trabalho.
+ //  ----- Orientações gerais -----
+//  Descrição: esse arquivo deve conter as questões do trabalho do aluno.
+//  Cada aluno deve renomear esse arquivo para Aluno<MATRICULA>.c
+//  O aluno deve preencher seus dados abaixo, e implementar as questões do trabalho
 
----------- Dados do Aluno --------------
-Nome:
-email:
-Matricula
-Semestre
+//  ----- Dados do Aluno -----
+//  Nome:
+//  email:
+//  Matrícula:
+//  Semestre:
 
-###################################
-EX:*/
+//  Copyright © 2016 Renato Novais. All rights reserved.
+// Última atualização: 12/12/2017
+
+// #################################################
 
 int somar(int x, int y); //função utilizada para testes
 int fatorial(int x); //função utilizada para testes
