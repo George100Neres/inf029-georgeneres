@@ -4,10 +4,10 @@
 //  O aluno deve preencher seus dados abaixo, e implementar as questões do trabalho
 
 //  ----- Dados do Aluno -----
-//  Nome:
-//  email:
-//  Matrícula:
-//  Semestre:
+//  Nome: GEORGE NERES DOS SANTOS
+//  email: george.neres100@gmail.com
+//  Matrícula:20192160015
+//  Semestre:2
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
 // Última atualização: 20/06/2018 - 19/08/2016

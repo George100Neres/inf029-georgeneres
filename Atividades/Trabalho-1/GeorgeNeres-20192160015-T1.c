@@ -4,10 +4,10 @@
 //  O aluno deve preencher seus dados abaixo, e implementar as questões do trabalho
 
 //  ----- Dados do Aluno -----
-//  Nome:
-//  email:
-//  Matrícula:
-//  Semestre:
+//  Nome: GEORGE NERES DOS SANTOS
+//  email: george.neres100@gmail.com
+//  Matrícula:20192160015
+//  Semestre:2
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
 // Última atualização: 20/06/2018 - 19/08/2016
@@ -217,7 +217,7 @@ int valid_num(int dia, int mes, int ano) {
     2 -> datainicial inválida
     3 -> datafinal inválida
     4 -> datainicial > datafinal
- */
+ 
 
   int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
 {
@@ -362,7 +362,7 @@ int valid_num(int dia, int mes, int ano) {
  @saida
     Um número n >= 0.
  */
-int q3(char *texto, char c, int isCaseSensitive)
+ /*int q3(char *texto, char c, int isCaseSensitive)
 {
     //[  ,   ,     ,      ,      ,      ,    ,      ,     ,   ]
    /*int qtdOcorrencias = 0;
@@ -376,7 +376,7 @@ int q3(char *texto, char c, int isCaseSensitive)
     } 
      
     return qtdOcorrencias;
-    */
+    
 
  int qtdOcorrencias = 0;
    char a[100]; // Vai faze a busca de caracteres
@@ -417,9 +417,9 @@ int q3(char *texto, char c, int isCaseSensitive)
     return qtdOcorrencias;
 
    
-}
+} */
 
-
+ 
 /*
  Q4 = encontrar palavra em texto
  @objetivo
@@ -434,7 +434,7 @@ int q3(char *texto, char c, int isCaseSensitive)
         Observe que o índice da posição no texto deve começar ser contado a partir de 1.
         O retorno da função, n, nesse caso seria 1;
  */
-int q4(char *strTexto, char *strBusca, int posicoes[30])
+ /*int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
     
   
@@ -483,7 +483,7 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
    }
     
 }
-
+  */
 /*
  Q5 = inverte número
  @objetivo
@@ -494,7 +494,7 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
     Número invertido
  */
 
-int q5(int num)
+ /*int q5(int num)
 {
   int pos_inv = 0;
   int temporar;
@@ -509,7 +509,7 @@ int q5(int num)
     }
     return pos_inv;
 }
-
+ */
 /*
  Q5 = ocorrência de um número em outro
  @objetivo
@@ -520,7 +520,7 @@ int q5(int num)
     Quantidade de vezes que número de busca ocorre em número base
  */
 
-int q6(int numerobase, int numerobusca)
+ /*int q6(int numerobase, int numerobusca)
 {
     int tempor;
     int tam = 1;
@@ -547,4 +547,4 @@ int q6(int numerobase, int numerobusca)
      }
      
     return qtdOcorrencias;
-}
+} */
