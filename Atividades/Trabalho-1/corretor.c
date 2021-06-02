@@ -11,19 +11,19 @@ void testQ2();
 void testQ3();
 void testQ4();
 void testQ5();
-void testQ6();
+void testQ6(); 
 
 int main()
 {
-    //testSomar();
-    //testFatorial();
+    testSomar();
+    testFatorial();
     testQ1();
     testQ2();
-   testQ3();
-    testQ4();
+    testQ3(); 
+    testQ4(); 
     testQ5();
-    testQ6();
-}
+    testQ6(); 
+} 
 
 void testSomar()
 {
@@ -56,7 +56,7 @@ void testQ1()
     printf("%d\n", q1(str) == 0);
 }
 
-void testQ2()
+  void testQ2()
 {
     char datainicial[11], datafinal[11];
     int qtdDias, qtdMeses, qtdAnos;
@@ -167,4 +167,4 @@ void testQ6()
     printf("%d\n", q6(34567368, 4576) == 0);
     printf("%d\n", q6(3539343, 3) == 4);
     printf("%d\n", q6(3539343, 39) == 1);
-}
+} 

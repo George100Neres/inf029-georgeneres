@@ -15,9 +15,12 @@
 // #################################################
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <locale.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#include "GeorgeNeres-20192160015-T1.h"
+
 /*
 ## função utilizada para testes  ##
  somar = somar dois valores
@@ -50,20 +53,7 @@ int fatorial(int x)
     int fat = 1;
     return fat;
 }
-// struct para recebeer os dias,mes,Ano
-/*typedef struct DQ
-{
-    char sDia[3];
-    char smes [3];
-    char sAno[3];
-    int valido ; // 0 se invalido, e 1 valido
-} DataQuebrada;
- 
-DataQuebrada quebraData(char  *data) {
- //[ ,   ,  / ,    ,   /   ,      ,      ,      ,]
- 
-  
-}
+
 /*
  Q1 = validar data
 @objetivo
@@ -76,137 +66,129 @@ DataQuebrada quebraData(char  *data) {
  @restrições
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
-
-     //int datavalida = 1;
-    //printf("%s\n",data);
-    //quebrar a string data em strings sDia, sMes, sAno
-      
- // DataQuebrada quebraData = quebraData(data); // (struct)passo a data
-// chamar a função quebrar Data
-
-    //converter sDia, sMes e sAno em inteiros (ex: atoi)
-
-    //criar as variáveis iDia, iMes, iAno
-
-    //printf("%s\n", data);
  */
- int valid_num(int dia, int mes,int ano);
 
- int identifique_car(char caract);
+int valida_numeros(int dia, int mes, int ano);
+int identifica_char(char caractere);
 
- int q1(char *data)
+int q1(char *data)
 {
-    char sDia[3];
-    char sMes[3];
-    char sAno[5];
-    int i;
-    int let_dia =0;
+	//isolar dia
+	char sDia[3];
+	int i;
+	int len_dia = 0;
 
-   for(i =0; data[i] !='/'; i++) {
+    for(i = 0; data[i] != '/'; i++){
 
-      sDia[i] = data[i];
+    	sDia[i] = data[i];
 
-       if(i > 1)
-         return 0;
-     
-     if(identifique_car(sDia[i]) == 1)
-     return 0;
-   }
+    	if (i > 1)
+    		return 0;
 
-   sDia[i] = '\0';
-   i++;
-
-   for(int c= 0; sDia[c] != '\0'; c++)
-       let_dia++;
-    
-    if(let_dia == 0)
-   
-     return 0;
-  
-     int iDia = atoi(sDia);
-
-      
-   int j;
-   int let_mes =0; // len_mes
-   int cont_Mes =0;
-
-   for(j = i; data[j] != '/'; j++, cont_Mes++) {
-
-       sMes[cont_Mes] = data[j];
-   }
-    if (cont_Mes > 1) 
-       return 0;
-    
-    if(identifique_car(sMes[cont_Mes]) == 1){
-    return 0;
+    	if (identifica_char(sDia[i]) == 1) return 0;
 
     }
 
-    sMes[j] = '\0';
-    j++;
+	sDia[i] = '\0';
+	i++;
 
-    for(int y =0; sMes[y] != '\0'; y++)
-    let_mes++;
+	for(int k = 0; sDia[k] != '\0'; k++)
+	   len_dia++;
 
-    if(let_mes == 0)
-    return 0;
+	if(len_dia == 0)
+	   return 0;
 
- int iMes = atoi(sMes);
+	int iDia = atoi(sDia);
+
+	//isolar o mês
+	char sMes[3];
+	int j;
+	int len_mes = 0;
+	int cont_Mes = 0;
+
+	for (j = i; data[j] != '/'; j++, cont_Mes++){
+
+	sMes[cont_Mes] = data[j];
+
+	if (cont_Mes > 1)
+		return 0;
+
+	if (identifica_char(sMes[cont_Mes]) == 1) return 0;
 
 
-int let_ano = 0;
-int cont_Ano = 0;
+	}
 
-for(int z = 0; data[z] != '\0'; z++){
-   let_ano++;
-    
-   for(i = j; i < let_ano; i++, cont_Ano++) {
+	sMes[j] = '\0';
+	j++;
 
-      sAno[cont_Ano] = data[i];
+	for(int y = 0; sMes[y] != '\0'; y++)
+		   len_mes++;
 
-       if(identifique_car(data[i]) == 1)
-       return 0;
-   }
+	if(len_mes == 0)
+		return 0;
 
-     if(cont_Ano != 2 && cont_Ano != 4)
-      return 0;
+    int iMes = atoi(sMes);
+
+
+   	char sAno[5];
+    int len_ano = 0;
+    int cont_Ano = 0;
+
+    for(int z = 0; data[z] != '\0'; z++)
+    		   len_ano++;
+
+    for (i = j; i < len_ano; i++, cont_Ano++){
+
+         sAno[cont_Ano] = data[i];
+
+         if (identifica_char(data[i]) == 1) return 0;
+
+     }
+
+      if (cont_Ano != 2 && cont_Ano != 4) return 0;
 
       sAno[cont_Ano] = '\0';
 
       int iAno = atoi(sAno);
 
-         int retorno = valid_num(iDia, iMes, iAno);
+	 int retorno = valida_numeros(iDia, iMes, iAno);
 
-         return retorno;
+	 return retorno;
 
-   }
+    //printf("%s\n", data) 28/12/1999;
 
-int valid_num(int dia, int mes, int ano) {
-
-  if((dia < 1 || dia > 31)  ||  (mes < 1 || mes > 12) || (ano < 1 || ano > 2021))
-  return 0;
-   
-   if(dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11) )
-   return 0;
-
-    if(dia > 29 && (mes == 2 && ano % 4 == 0 || ano % 400 == 0 && ano % 100 != 0))
-     return 0;
-     if(dia > 28 && (mes == 2 && ano % 4 != 0 || ano % 400 != 0 && ano % 100 == 0) )
-     return 0;
-
-     return 1;
-  }
-
-  int identifique_car (char caract) {
-
-     if(caract < 48 || caract > 57)
-       return 1;
-    else 
-        return 0;
-  }
 }
+
+int valida_numeros(int dia, int mes, int ano){
+
+
+    if ((dia < 1 || dia > 31) || (mes < 1 || mes > 12) || (ano < 1 || ano > 2021))
+        return 0;
+
+    if (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11) )
+        return 0;
+
+
+    if (dia > 29 && (mes == 2 && ano % 4 == 0 || ano % 400 == 0 && ano % 100 != 0) )
+        return 0;
+    if (dia > 28 && (mes == 2 && ano % 4 != 0 || ano % 400 != 0 && ano % 100 == 0) )
+        return 0;
+
+    return 1;
+
+}
+
+
+int identifica_char(char caractere){
+
+    if (caractere < 48 || caractere > 57)
+        return 1;
+    else
+        return 0;
+
+ }
  
-/*
+ /*
  Q2 = diferença entre duas datas
  @objetivo
     Calcular a diferença em anos, meses e dias entre duas datas
@@ -218,206 +200,156 @@ int valid_num(int dia, int mes, int ano) {
     3 -> datafinal inválida
     4 -> datainicial > datafinal
  
-
+  */
   int q2(char *datainicial, char *datafinal, int *qtdDias, int *qtdMeses, int *qtdAnos)
 {
 
-    //calcule os dados e armazene nas três variáveis a seguir
-      char sDia[3], sMes[3], sAno[5];
+    char sDia[3], sMes[3], sAno[5];
     int nDias, nMeses, nAnos;
 
     if (q1(datainicial) == 0)
         return 2;
-    if(q1(datafinal) == 0)
-      return 3;
+    if (q1(datafinal) == 0)
+        return 3;
 
-     int i;
-     int j;
-     int let_mes =0;
-    for (i=0; datainicial[i] != '/'; i++)
-       sDia[i] = datainicial[i];
+    int i;
 
-       sDia[i] = '\0';
-       i++;
+    for (i = 0; datainicial[i] != '/'; i++)
+        sDia[i] = datainicial[i];
 
-       for(i = 0; datainicial[i] != '/'; i++)
-         sDia[i] = datainicial[i];
+    sDia[i] = '\0';
+    i++;
 
-         
+    int j;
+    int len_mes = 0;
 
-     for(j = i; let_mes = 0; datainicial[j] != '/'; j++, let_mes++)
-       sMes[let_mes] = datainicial[j];
+    for (j = i, len_mes = 0; datainicial[j] != '/'; j++, len_mes++)
+        sMes[len_mes] = datainicial[j];
 
-       sMes[j] = '\0';
-       j++;
-
-       int let_ano = 0;
-       int let_dat_inicial =0;
-
-    for(int c = 0; datainicial[c] != '\0'; k++)
-        let_dat_inicial++;
-
-      for(i = j, let_ano = 0; i < let_dat_inicial; i++, let_ano)
-        sAno[let_ano] = datainicial[i];
-
-   sAno[let_ano] = '\0';
+    sMes[j] = '\0';
     j++;
 
-     int let_ano = 0;
+    int len_ano = 0;
+    int len_data_inicial = 0;
 
-     int let_dat_inicial = 0;
+    for(int k = 0; datainicial[k] != '\0'; k++)
+    	   len_data_inicial++;
 
-     for(int c=0; datainicial[c] != '\0'; c++)
-         let_dat_inicial++;
+    for (i = j, len_ano = 0; i < len_data_inicial; i++, len_ano++)
+       sAno[len_ano] = datainicial[i];
 
-      for(i = j; let_ano = 0; i < let_dat_inicial; i++, let_ano++)
-         sAno[let_ano] = datainicial[i];
-
-      sAno[let_ano] = '\0';
-
-      int iDiainicial = atoi(sDia);
-       int iMesinicial = atoi(sMes);
-        int iAnoinicial = atoi(sAno);
+    sAno[len_ano] = '\0';
 
 
-    for(i = 0; datafinal[i] != '/'; i++)
+    int iDiaInicial = atoi(sDia);
+    int iMesInicial = atoi(sMes);
+    int iAnoInicial = atoi(sAno);
+
+
+   for (i = 0; datafinal[i] != '/'; i++)
         sDia[i] = datafinal[i];
 
-     sDia[i] = '\0';
-     i++;
+    sDia[i] = '\0';
+    i++;
 
-      for(j = i, let_mes = 0; datafinal[j] != '/'; j++, let_mes++)
-        sMes[let_mes] = datafinal[j];
+    for (j = i, len_mes = 0; datafinal[j] != '/'; j++, len_mes++)
+        sMes[len_mes] = datafinal[j];
 
-      sMes[j] = '\0';
-      j++;
+    sMes[j] = '\0';
+    j++;
 
-    int let_dat_final = 0; // eln_data_final
+    int len_data_final = 0;
 
-      for(int c = 0; datafinal[c] != '\0'; c++)
-      sAno[let_ano] = datafinal[i];
+	for(int k = 0; datafinal[k] != '\0'; k++)
+		len_data_final++;
 
-    sAno[let_ano] = '\0';
+    for (i = j, len_ano = 0; i < len_data_final; i++, len_ano++)
+       sAno[len_ano] = datafinal[i];
+
+    sAno[len_ano] = '\0';
 
     int iDiaFinal = atoi(sDia);
     int iMesFinal = atoi(sMes);
     int iAnoFinal = atoi(sAno);
 
-     if(iAnoFinal < iAnoinicial || (iAnoFinal == iAnoinicial && iMesFinal)|| (iAnoFinal == iAnoinicial && iMesFinal == iMesinicial && iDiaFinal < iDiainicial))
-    return 4;
+    if (iAnoFinal < iAnoInicial || (iAnoFinal == iAnoInicial && iMesFinal < iMesInicial) || (iAnoFinal == iAnoInicial && iMesFinal == iMesInicial && iDiaFinal < iDiaInicial))
+        return 4;
 
     int mesFinalAnterior = iMesFinal - 1;
 
-    if(iDiaFinal < iDiainicial)
+    if (iDiaFinal < iDiaInicial){
 
-     if(mesFinalAnterior == 2){
+        if (mesFinalAnterior == 2){
 
-        if(mesFinalAnterior == 2) {
-
-           if(iAnoFinal % 4 == 0 || iAnoFinal % 400 == 0 && (iAnoFinal % 100 != 0))
-            iDiaFinal + = 29;
-            else 
-               iDiaFinal += 28;
+            if (iAnoFinal % 4 == 0 || iAnoFinal % 400 == 0 && (iAnoFinal % 100 != 0) )
+                iDiaFinal += 29;
+            else
+                iDiaFinal += 28;
         }
 
-        if(mesFinalAnterior == 4 || mesFinalAnterior == 6 || mesFinalAnterior == 9 || mesFinalAnterior == 11)
-        iDiaFinal +=30;
-        else 
-          iDiaFinal += 31;
+        if (mesFinalAnterior == 4 || mesFinalAnterior == 6 || mesFinalAnterior == 9 || mesFinalAnterior == 11)
+            iDiaFinal += 30;
+        else
+            iDiaFinal += 31;
 
-          iMesFinal --;
-     }
+        iMesFinal--;
+    }
 
-       if(iMEsFInal < iMesInicial) {
+    if (iMesFinal < iMesInicial){
 
-         iMesFinal += 12;
-         iAnoFinal--;
-       }
- 
-       nDias = iDiaFinal - iDiainicial;
-       nMeses = iMesFinal - iMesinicial;
-       nAnos = iAnoFinal - iAnoinicial;
+        iMesFinal += 12;
+        iAnoFinal--;
+    }
 
-   return 1;
-   
-}
+    nDias = iDiaFinal - iDiaInicial;
+    nMeses = iMesFinal - iMesInicial;
+    nAnos = iAnoFinal - iAnoInicial;
+
     /*mantenha o código abaixo, para salvar os dados em 
     nos parâmetros da funcao
     */
-   // *qtdDias = nDias;
-   // *qtdAnos = nAnos;
-   // *qtdMeses = nMeses;
+    *qtdDias = nDias;
+    *qtdAnos = nAnos;
+    *qtdMeses = nMeses;
 
     //coloque o retorno correto
-   // return 1; 
-// } 
+    return 1;
+
+}
 
 
-/* Q3 = encontrar caracter em texto
+  /*Q3 = encontrar caracter em texto
  @objetivo
     Pesquisar quantas vezes um determinado caracter ocorre em um texto
  @entrada
     uma string texto, um caracter c e um inteiro que informa se é uma pesquisa Case Sensitive ou não. Se isCaseSensitive = 1, a pesquisa deve considerar diferenças entre maiúsculos e minúsculos.
         Se isCaseSensitive != 1, a pesquisa não deve  considerar diferenças entre maiúsculos e minúsculos.
  @saida
-    Um número n >= 0.
- */
- /*int q3(char *texto, char c, int isCaseSensitive)
+    Um número n >= 0. */
+ 
+  int q3(char *texto, char c, int isCaseSensitive)
 {
     //[  ,   ,     ,      ,      ,      ,    ,      ,     ,   ]
-   /*int qtdOcorrencias = 0;
-   char caract[250]; // Vai faze a busca de caracteres
-   int i,j;
-   int text = 0;
-    
-    for(i=0; i < texto[i]!= '\0'; i++) {
-       caract[i] = texto[i];
-       
-    } 
-     
-    return qtdOcorrencias;
-    
+   int qtdOcorrencias = 0;
+    int len = 0;
 
- int qtdOcorrencias = 0;
-   char a[100]; // Vai faze a busca de caracteres
-   char b[100];
-   for(int i=0; texto[i] !='\0'; i++){
-     for(int j=0; texto[j] != '\0'; j++){
-       if((texto[i] >= 'A') && (texto[i] <= 'Z')) {
-         if((texto[j] >= 'A') && (texto[j] <= 'Z')) {
-          if(texto[i] == texto[j] && j != i ) {
-              qtdOcorrencias++; // vai contabilixar quantos caracteres repetidos
-              break;
-           a[i] = texto[i];
-           b[i] = texto[i] + 32; // Somando a posicao do A ate o Z
-           a[j] = texto[i];
-           b[j] = texto[j] + 32;
-          }
-       }
-    }
-    
-     if((texto[i] >= 'a') && (texto[i] <='z')) {
-     if((texto [j] >= 'a') && (texto[j] <= 'z')) {
+    for(int k = 0; texto[k] != '\0'; k++)
+    	len++;
 
-        a[i] = texto[i] - 32;
-        b[i] = texto[i];
-        a[j] = texto[j] - 32;
-        b[j] = texto[j];
-         }
-     }
-      else {
-          a[i] = texto[i];
-          b[i] = texto[i];
-          a[j] = texto[j];
-          b[j] = texto [j];
-      }
-   
-     }
-  }
+    if (isCaseSensitive == 1)
+        for (int i = 0; i < len; i++)
+            if (texto[i] == c)
+                qtdOcorrencias++;
+
+    if (isCaseSensitive != 1)
+        for(int i = 0; i < len; i++)
+            if (texto[i] == toupper(c) || texto[i] == tolower(c))
+                qtdOcorrencias++;
+
+
     return qtdOcorrencias;
 
-   
-} */
+}
 
  
 /*
@@ -432,9 +364,9 @@ int valid_num(int dia, int mes, int ano) {
         posicoes[0] = 13;
         posicoes[1] = 16;
         Observe que o índice da posição no texto deve começar ser contado a partir de 1.
-        O retorno da função, n, nesse caso seria 1;
- */
- /*int q4(char *strTexto, char *strBusca, int posicoes[30])
+        O retorno da função, n, nesse caso seria 1; */
+ 
+ int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
     
   
@@ -482,8 +414,8 @@ int valid_num(int dia, int mes, int ano) {
      }
    }
     
-}
-  */
+} 
+  
 /*
  Q5 = inverte número
  @objetivo
@@ -492,9 +424,9 @@ int valid_num(int dia, int mes, int ano) {
     uma int num.
  @saida
     Número invertido
- */
+  */
 
- /*int q5(int num)
+  int q5(int num)
 {
   int pos_inv = 0;
   int temporar;
@@ -508,23 +440,16 @@ int valid_num(int dia, int mes, int ano) {
 
     }
     return pos_inv;
-}
- */
-/*
- Q5 = ocorrência de um número em outro
- @objetivo
-    Verificar quantidade de vezes da ocorrência de um número em outro
- @entrada
-    Um número base (numerobase) e um número de busca (numerobusca).
- @saida
-    Quantidade de vezes que número de busca ocorre em número base
- */
+} 
+ 
 
- /*int q6(int numerobase, int numerobusca)
+
+
+ int q6(int numerobase, int numerobusca)
 {
     int tempor;
     int tam = 1;
-    int qtdOcorrencias;
+    int qtdOcorrencias = 0;
 
     tempor = numerobusca;
 
@@ -547,4 +472,4 @@ int valid_num(int dia, int mes, int ano) {
      }
      
     return qtdOcorrencias;
-} */
+} 
